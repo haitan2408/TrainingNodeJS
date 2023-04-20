@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="num">
+<button onclick="countDown()">Run</button>
+<p id="result"></p>
+<script>
+    function countDown() {
+        let i = document.getElementById("num").value * 1;
+        let myInterval  = setInterval(function () {
+            document.getElementById('result').innerHTML = i;
+            i--;
+            if(i<0) {
+                clearInterval(myInterval)
+            }
+        }, 1000)
+    }
+</script>
+</body>
+</html>
