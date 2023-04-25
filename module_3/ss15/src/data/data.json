@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "topic": "Should dogs be allowed to fly?",
+    "choices": [
+      {
+        "value": "Yes",
+        "votes": 18,
+        "id": 0
+      },
+      {
+        "value": "No",
+        "votes": 10,
+        "id": 1
+      },
+      {
+        "value": "Perhaps",
+        "votes": 18,
+        "id": 2
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "topic": "ABc?",
+    "choices": [
+      {
+        "value": "Yes",
+        "votes": 6,
+        "id": 0
+      },
+      {
+        "value": "No",
+        "votes": 3,
+        "id": 1
+      },
+      {
+        "value": "Perhaps",
+        "votes": 3,
+        "id": 2
+      }
+    ]
+  }
+]
