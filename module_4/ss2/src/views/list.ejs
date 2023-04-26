@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination p {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .pagination p.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <button class="btn btn-primary mt-3 mb-3" onclick="window.location.href='/create'">Create</button>
+    <table class="table table-striped" style="width: 50%;">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% if(data.length != 0) { %>
+            <% for (const val of data) { %>
+                <tr>
+                    <td><%= val.id %></td>
+                    <td><%= val.name %></td>
+                    <td><%= val.department %></td>
+                    <td>
+                        <button type="button" class="btn btn-danger"
+                                onclick="openModal(<%= val.id %>, '<%= val.name %>')">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            <% } %>
+        <% }else { %>
+            <tr>
+                <td colspan="4">Không có dữ liệu</td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <div class="pagination">
+        <p id="previous">❮</p>
+        <p id="next">❯</p>
+    </div>
+</div>
+<form method="post" action="delete">
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Employee</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <input type="hidden" id="idEmployee" name="idEmployee" value="">
+                <div class="modal-body">
+                    Are you sure delete Employee with name <span id="nameEmployee" style="color: red"> ?
+                </div>
+                <div class="modal-footer">
+                    <b style=";color:red;">(*) This action cannot be undone</b> <br>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script>
+    let page = <%= page %>;
+    let length = <%= data.length %>;
+    <% if(success == "true") { %>
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Add employee successfully!',
+        showConfirmButton: false,
+        timer: 2000
+    })
+    <% } %>
+    <% if(success == "delete") { %>
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Remove employee successfully!',
+        showConfirmButton: false,
+        timer: 2000
+    })
+    <% } %>
+    function openModal(id, name) {
+        document.getElementById("nameEmployee").innerText = name;
+        document.getElementById("idEmployee").value = id;
+        $('#deleteModal').modal('toggle');
+    }
+
+    $('#previous').click(function () {
+        if (page > 0) {
+            page--;
+            window.location.href = "/?page=" + page;
+        } else {
+            $('#previous').css("background-color", "#dddddd");
+        }
+    })
+    $('#next').click(function () {
+        console.log(length)
+        if (page >= 0 && length != 0) {
+            page++;
+            window.location.href = "/?page=" + page;
+        } else {
+            $('#next').css("background-color", "#dddddd");
+        }
+
+    })
+</script>
+</body>
+</html>

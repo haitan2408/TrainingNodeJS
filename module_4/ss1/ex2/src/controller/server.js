@@ -4,8 +4,6 @@ const port = 3000;
 const path = require("path");
 const multer = require('multer');
 const upload = multer();
-const url = require("url");
-const querystring = require('querystring');
 const employeeService = require('../service/employee_service');
 const session = require('express-session');
 app.use(session({
