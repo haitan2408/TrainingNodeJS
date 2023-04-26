@@ -1,0 +1,1 @@
+[{"id":1,"topic":"Should dogs be allowed to fly?","room":1,"choices":[{"value":"Yes","votes":21,"id":0},{"value":"No","votes":12,"id":1},{"value":"Perhaps","votes":21,"id":2}]},{"id":2,"topic":"ABc?","room":2,"choices":[{"value":"Yes","votes":8,"id":0},{"value":"No","votes":4,"id":1},{"value":"Perhaps","votes":5,"id":2}]}]

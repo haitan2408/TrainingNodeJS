@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Real-time Todolist app</title>
+
+    <!-- Call Bootstrap -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+<div class="container">
+    <input class="form-control" style="width: 30%" id="nameRoom">
+    <button class="btn btn-warning" style="margin-top: 10px" id="joinRoom">Join</button>
+    <div class="row" id="answer">
+
+    </div>
+</div>
+
+
+<!-- Call JS files -->
+<script src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+        integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+        crossorigin="anonymous"></script>
+<script src="app.js"></script>
+</body>
+</html>
