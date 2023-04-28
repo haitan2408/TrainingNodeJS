@@ -32,13 +32,14 @@
 </head>
 <body>
 <div class="container">
-    <button class="btn btn-primary mt-3 mb-3" onclick="window.location.href='/create'">Create</button>
-    <table class="table table-striped" style="width: 50%;">
+    <button class="btn btn-primary mt-3 mb-3" onclick="window.location.href='/phoneBook/create'">Create</button>
+    <table class="table table-striped" style="width: 100%;">
         <thead>
         <tr>
-            <th>Id</th>
             <th>Name</th>
-            <th>Department</th>
+            <th>Email</th>
+            <th>Adress</th>
+            <th>Phone</th>
             <th>Delete</th>
         </tr>
         </thead>
@@ -46,12 +47,13 @@
         <% if(data.length != 0) { %>
             <% for (const val of data) { %>
                 <tr>
-                    <td><%= val.id %></td>
                     <td><%= val.name %></td>
-                    <td><%= val.department %></td>
+                    <td><%= val.email %></td>
+                    <td><%= val.address %></td>
+                    <td><%= val.phone %></td>
                     <td>
                         <button type="button" class="btn btn-danger"
-                                onclick="openModal(<%= val.id %>, '<%= val.name %>')">
+                                onclick="openModal('<%= val.id %>', '<%= val.name %>')">
                             Delete
                         </button>
                     </td>
@@ -59,7 +61,7 @@
             <% } %>
         <% }else { %>
             <tr>
-                <td colspan="4">Không có dữ liệu</td>
+                <td colspan="5">Không có dữ liệu</td>
             </tr>
         <% } %>
         </tbody>
@@ -69,17 +71,17 @@
         <p id="next">❯</p>
     </div>
 </div>
-<form method="post" action="delete">
+<form method="post" action="/phoneBook/delete">
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Delete Employee</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Delete PhoneNumber</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <input type="hidden" id="idEmployee" name="idEmployee" value="">
+                <input type="hidden" id="idPhone" name="idPhone" value="">
                 <div class="modal-body">
-                    Are you sure delete Employee with name <span id="nameEmployee" style="color: red"> ?</span>
+                    Are you sure delete PhoneNumber with name is <span id="namePhone" style="color: red"> ?</span>
                 </div>
                 <div class="modal-footer">
                     <b style=";color:red;">(*) This action cannot be undone</b> <br>
@@ -97,11 +99,11 @@
 <script>
     let page = <%= page %>;
     let length = <%= data.length %>;
-    <% if(success == "true") { %>
+    <% if(success == "create") { %>
     Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Add employee successfully!',
+        title: 'Add PhoneNumber successfully!',
         showConfirmButton: false,
         timer: 2000
     })
@@ -110,30 +112,29 @@
     Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Remove employee successfully!',
+        title: 'Remove PhoneNumber successfully!',
         showConfirmButton: false,
         timer: 2000
     })
     <% } %>
     function openModal(id, name) {
-        document.getElementById("nameEmployee").innerText = name;
-        document.getElementById("idEmployee").value = id;
+        document.getElementById("namePhone").innerText = name;
+        document.getElementById("idPhone").value = id;
         $('#deleteModal').modal('toggle');
     }
 
     $('#previous').click(function () {
         if (page > 0) {
             page--;
-            window.location.href = "/?page=" + page;
+            window.location.href = "phoneBook?page=" + page;
         } else {
             $('#previous').css("background-color", "#dddddd");
         }
     })
     $('#next').click(function () {
-        console.log(length)
         if (page >= 0 && length != 0) {
             page++;
-            window.location.href = "/?page=" + page;
+            window.location.href = "phoneBook?page=" + page;
         } else {
             $('#next').css("background-color", "#dddddd");
         }
