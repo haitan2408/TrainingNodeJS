@@ -1,0 +1,11 @@
+[2023-05-17 17:09:01] [error] Error: log error
+    at E:\WorkSpace\CodeGym\CodeGym\Training_NodeJS\module_4\ss10\dist\controller\auth.router.js:14:15
+    at Layer.handle [as handle_request] (E:\WorkSpace\CodeGym\CodeGym\Training_NodeJS\module_4\ss10\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\WorkSpace\CodeGym\CodeGym\Training_NodeJS\module_4\ss10\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (E:\WorkSpace\CodeGym\CodeGym\Training_NodeJS\module_4\ss10\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (E:\WorkSpace\CodeGym\CodeGym\Training_NodeJS\module_4\ss10\node_modules\express\lib\router\layer.js:95:5)
+    at E:\WorkSpace\CodeGym\CodeGym\Training_NodeJS\module_4\ss10\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (E:\WorkSpace\CodeGym\CodeGym\Training_NodeJS\module_4\ss10\node_modules\express\lib\router\index.js:346:12)
+    at next (E:\WorkSpace\CodeGym\CodeGym\Training_NodeJS\module_4\ss10\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (E:\WorkSpace\CodeGym\CodeGym\Training_NodeJS\module_4\ss10\node_modules\express\lib\router\index.js:175:3)
+    at router (E:\WorkSpace\CodeGym\CodeGym\Training_NodeJS\module_4\ss10\node_modules\express\lib\router\index.js:47:12)
