@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3000;
-const path = require("path")
+const path = require("path");
 const employeeService = require("../service/employee_service");
 const session = require('express-session');
 app.use(session({
